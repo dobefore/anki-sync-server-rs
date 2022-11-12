@@ -79,6 +79,10 @@ jobs:
           export OPENSSL_LIB_DIR=$HOME/openssl/lib
           export OPENSSL_INCLUDE_DIR=$HOME/openssl/include
           export OPENSSL_STATIC=true
+          
+          export SQLITE3_LIB_DIR=$HOME/sql/lib
+          export SQLITE3_INCLUDE_DIR=$HOME/sql/include
+          export SQLITE3_STATIC=1
           pwd
           ls $HOME
           cp -r $HOME/sql .
