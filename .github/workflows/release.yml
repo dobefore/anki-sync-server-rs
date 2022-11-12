@@ -92,7 +92,7 @@ jobs:
           ls .
           ls sql/lib
           export PATH="$HOME/arm-linux-musleabihf-cross/bin:$PATH"
-          cargo build --target arm-unknown-linux-musleabihf --release --features tls
+          cargo build --target arm-unknown-linux-musleabihf --release --features tls -v
   
       - name: Strip binaries (ankisyncd)
         run: $HOME/arm-linux-musleabihf-cross/bin/arm-linux-musleabihf-strip target/arm-unknown-linux-musleabihf/release/ankisyncd
