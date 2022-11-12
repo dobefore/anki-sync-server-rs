@@ -23,7 +23,9 @@ jobs:
 
       # clone and patch anki library  
       - name: Clone patch Anki
-        run: sh ./scripts/clone_patch_anki
+        run: |
+          sh ./scripts/clone_patch_anki
+          cp ./scripts/Cargo.toml anki/rslib/
 
       - name: Install Protoc
         run: |
