@@ -80,7 +80,7 @@ jobs:
       # build static-linked binary for armv6 (also suitable for aarch64)
       - name: Build 
         run: | 
-          export PATH="$PATH:$HOME/protoc"
+          export PATH="$PATH:$HOME/protoc/bin"
           
           export OPENSSL_LIB_DIR=$HOME/openssl/lib
           export OPENSSL_INCLUDE_DIR=$HOME/openssl/include
