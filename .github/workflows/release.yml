@@ -85,10 +85,12 @@ jobs:
           export OPENSSL_LIB_DIR=$HOME/openssl/lib
           export OPENSSL_INCLUDE_DIR=$HOME/openssl/include
           export OPENSSL_STATIC=true
-          ls .
+          
           pwd
           ls $HOME
           cp -r $HOME/sql .
+          ls .
+          ls sql/lib
           export PATH="$HOME/arm-linux-musleabihf-cross/bin:$PATH"
           cargo build --target arm-unknown-linux-musleabihf --release --features tls
   
