@@ -65,18 +65,18 @@ jobs:
       - uses: robinraju/release-downloader@v1.4
         with:
           repository: "dobefore/cross-compile-sqlite-musl"
-          tag: "0.1.2"
-          fileName: "sqliteautoconf3390000_0.1.2_linux_armv6.tar.gz"
+          tag: "0.1.1"
+          fileName: "sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz"
           
       - name: Copy sqlite lib to home
-        run: cp sqliteautoconf3390000_0.1.2_linux_armv6.tar.gz $HOME
+        run: cp sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz $HOME
 
       - name: unpack  sqlite3
         run: |
-          tar -zxvf $HOME/sqliteautoconf3390000_0.1.2_linux_armv6.tar.gz -C $HOME
-          cp -r $HOME/sqliteautoconf3390000_0.1.2_linux_armv6/sql/ $HOME
-    
-
+          tar -zxvf $HOME/sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz -C $HOME
+          cd $HOME/sqliteautoconf3390400_0.1.1_linux_armv6/
+          cp -r sql/ $HOME
+  
       # build static-linked binary for armv6 (also suitable for aarch64)
       - name: Build 
         run: | 
@@ -86,13 +86,9 @@ jobs:
           export OPENSSL_INCLUDE_DIR=$HOME/openssl/include
           export OPENSSL_STATIC=true
           
-          pwd
-          ls $HOME
-          cp -r $HOME/sql .
-          ls .
-          ls sql/lib
           export PATH="$HOME/arm-linux-musleabihf-cross/bin:$PATH"
-          cargo build --target arm-unknown-linux-musleabihf --release --features tls -v
+          cp -r $HOME/sql .
+          cargo build --target arm-unknown-linux-musleabihf --release --features tls 
   
       - name: Strip binaries (ankisyncd)
         run: $HOME/arm-linux-musleabihf-cross/bin/arm-linux-musleabihf-strip target/arm-unknown-linux-musleabihf/release/ankisyncd
