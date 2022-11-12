@@ -170,7 +170,10 @@ jobs:
       # clone and patch anki library  
       - name: Clone patch Anki
         run: sh ./scripts/clone_patch_anki
-
+      - name: Install protoc
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install protobuf
       - name: Build
         uses: actions-rs/cargo@v1
         with:
