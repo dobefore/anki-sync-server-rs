@@ -26,9 +26,7 @@ jobs:
         run: sh ./scripts/clone_patch_anki
 
       - name: Install Protoc
-        uses: arduino/setup-protoc@v1
-        with:
-          version: '3.x'
+        run: apt install -y protobuf-compiler
 
       - name: Add cargo taget armv6
         run: rustup target add arm-unknown-linux-musleabihf
