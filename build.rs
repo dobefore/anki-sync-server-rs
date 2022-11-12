@@ -7,6 +7,7 @@ fn main() {
     // used in cross compile while building with CD
     // such as arm-unknown-linux-musleabihf
     let target = env::var("TARGET").expect("TARGET was not set");
+    println!("{:?}",target);
    if target.contains("arm") && target.contains("musl") {
    //      find and link static sqlite3 lib
         let sql = Path::new(&env::current_dir().unwrap()).join("sql/lib");
