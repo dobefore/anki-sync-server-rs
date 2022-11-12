@@ -26,7 +26,13 @@ jobs:
         run: sh ./scripts/clone_patch_anki
 
       - name: Install Protoc
-        run: apt-get install --no-install-recommends --assume-yes protobuf-compiler 
+        run: |
+          PB_REL="https://github.com/protocolbuffers/protobuf/releases"
+          curl -LO $PB_REL/download/v3.15.8/protoc-3.15.8-linux-x86_64.zip
+          mkdir -p $HOME/protoc
+          unzip protoc-3.15.8-linux-x86_64.zip -d $HOME/protoc
+          
+          
 
       - name: Add cargo taget armv6
         run: rustup target add arm-unknown-linux-musleabihf
@@ -74,6 +80,8 @@ jobs:
       # build static-linked binary for armv6 (also suitable for aarch64)
       - name: Build 
         run: | 
+          export PATH="$PATH:$HOME/protoc"
+          
           export OPENSSL_LIB_DIR=$HOME/openssl/lib
           export OPENSSL_INCLUDE_DIR=$HOME/openssl/include
           export OPENSSL_STATIC=true
