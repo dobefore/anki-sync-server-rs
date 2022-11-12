@@ -66,15 +66,15 @@ jobs:
         with:
           repository: "dobefore/cross-compile-sqlite-musl"
           tag: "0.1.1"
-          fileName: "sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz"
+          fileName: "sqliteautoconf3390000_0.1.2_linux_armv6.tar.gz"
           
       - name: Copy sqlite lib to home
-        run: cp sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz $HOME
+        run: cp sqliteautoconf3390000_0.1.2_linux_armv6.tar.gz $HOME
 
       - name: unpack  sqlite3
         run: |
-          tar -zxvf $HOME/sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz -C $HOME
-          cp -r $HOME/sqliteautoconf3390400_0.1.1_linux_armv6/sql/ $HOME
+          tar -zxvf $HOME/sqliteautoconf3390000_0.1.2_linux_armv6.tar.gz -C $HOME
+          cp -r $HOME/sqliteautoconf3390000_0.1.2_linux_armv6/sql/ $HOME
     
 
       # build static-linked binary for armv6 (also suitable for aarch64)
