@@ -76,13 +76,12 @@ jobs:
       # build static-linked binary for armv6 (also suitable for aarch64)
       - name: Build 
         run: | 
-          export OPENSSL_LIB_DIR=$HOME/anki-sync-server-rs/openssl/lib
-          export OPENSSL_INCLUDE_DIR=$HOME/anki-sync-server-rs/openssl/include
+          export OPENSSL_LIB_DIR=$HOME/openssl/lib
+          export OPENSSL_INCLUDE_DIR=$HOME/openssl/include
           export OPENSSL_STATIC=true
           pwd
-          ls $HOME/openssl/
-          cp -r $HOME/openssl/  $HOME/anki-sync-server-rs/
-          cp -r $HOME/sql/  $HOME/anki-sync-server-rs/
+          ls $HOME
+          cp -r $HOME/sql .
           export PATH="$HOME/arm-linux-musleabihf-cross/bin:$PATH"
           cargo build --target arm-unknown-linux-musleabihf --release --features tls
   
