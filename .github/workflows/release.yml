@@ -56,8 +56,7 @@ jobs:
       - name: unpack  openssl 
         run: |
           tar -zxvf $HOME/openssl1.1.1f_1.1.1_linux_armv6.tar.gz -C $HOME
-          cd $HOME/openssl1.1.1f_1.1.1_linux_armv6/
-          cp -r openssl/ $HOME/
+          cp -r $HOME/openssl1.1.1f_1.1.1_linux_armv6/openssl/ $HOME
       # sqlite3
       - uses: robinraju/release-downloader@v1.4
         with:
@@ -71,8 +70,7 @@ jobs:
       - name: unpack  sqlite3
         run: |
           tar -zxvf $HOME/sqliteautoconf3390400_0.1.1_linux_armv6.tar.gz -C $HOME
-          cd $HOME/sqliteautoconf3390400_0.1.1_linux_armv6/
-          cp -r sql/ $HOME/
+          cp -r $HOME/sqliteautoconf3390400_0.1.1_linux_armv6/sql/ $HOME
     
 
       # build static-linked binary for armv6 (also suitable for aarch64)
@@ -81,6 +79,8 @@ jobs:
           export OPENSSL_LIB_DIR=$HOME/anki-sync-server-rs/openssl/lib
           export OPENSSL_INCLUDE_DIR=$HOME/anki-sync-server-rs/openssl/include
           export OPENSSL_STATIC=true
+          pwd
+          ls $HOME/openssl/
           cp -r $HOME/openssl/  $HOME/anki-sync-server-rs/
           cp -r $HOME/sql/  $HOME/anki-sync-server-rs/
           export PATH="$HOME/arm-linux-musleabihf-cross/bin:$PATH"
