@@ -25,7 +25,6 @@ jobs:
       - name: Clone patch Anki
         run: |
           sh ./scripts/clone_patch_anki
-          cp ./scripts/Cargo.toml anki/rslib/
 
       - name: Install Protoc
         run: |
@@ -93,8 +92,6 @@ jobs:
           export SQLITE3_STATIC=1
           
           export PATH="$HOME/arm-linux-musleabihf-cross/bin:$PATH"
-          cp -r $HOME/sql .
-          cargo clean
           cargo build --target arm-unknown-linux-musleabihf --release --features tls 
   
       - name: Strip binaries (ankisyncd)
